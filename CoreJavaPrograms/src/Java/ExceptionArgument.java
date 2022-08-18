@@ -69,7 +69,7 @@ public static void main(String args[]) {
 		System.out.println(" ");
 		int[] arr1 = null;
 		
-		sum(arr1,0,2); //sum for null pointer
+		
 		
 		try {
             
