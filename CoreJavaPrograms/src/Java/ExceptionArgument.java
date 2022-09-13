@@ -26,7 +26,7 @@ public class ExceptionArgument {
 	static int maxElem=10; //maximum number of elements to be stored in an array 
 	
 	
-	static void arrayCreate(int n) {
+	static int[] arrayCreate(int n) {
 		arr=new int[n];
 		int i;
 		try {
@@ -35,8 +35,17 @@ public class ExceptionArgument {
 			if(n>maxElem) throw new ArrayIndexOutOfBoundsException();
 			System.out.println("Enter the array elements: ");
 		    for(i=0;i<n;i++) {
+		    	
 			Scanner sc=new Scanner(System.in);
 			arr[i]=sc.nextInt();
+			
+			
+				//Here we make the pointer null when user entered 0
+				if(arr[i]==0) {
+					arr=null;
+				  return arr;
+				}
+					
 		  	
 		    }
 		}catch (ArrayIndexOutOfBoundsException e) {
@@ -44,12 +53,14 @@ public class ExceptionArgument {
 		}catch(IllegalArgumentException e) {
 			System.out.println("Ooops! Array is empty IllegalArgumentException");
 		}
+		return arr;
 	}
 	//Show array elements
 	static int[] arrayShow() {
 		int i;
 		int len= arr.length;
 			System.out.print(" The array elements are:");
+			if(arr==null) return null;
 			for(i=0;i<len;i++) {
 				System.out.print(" "+arr[i]+" ");
 				}
@@ -74,7 +85,7 @@ public static void main(String args[]) {
 		try {
             
 			if(n>10) throw new Exception(); //If input of number of elements more than 10 , throw exception.
-			 
+//			 if(n==0) throw new Exception();
 			arr1=arrayShow(); 
 			
 			 System.out.println();
